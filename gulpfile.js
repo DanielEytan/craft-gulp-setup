@@ -5,6 +5,7 @@ var clean = require('gulp-clean');
 var autoprefixer = require('gulp-autoprefixer');
 var browserSync = require('browser-sync').create();
 var fs = require('fs');
+var webpack = require('webpack-stream');
 
  gulp.task('clean', function () {
     return gulp.src('./dist/*', {read: false})
@@ -15,13 +16,12 @@ gulp.task('templates', function () {
     'use strict';
     var twig = require('gulp-twig');
     var contentde = JSON.parse(fs.readFileSync('./content/de.json', 'utf8'));
-    console.log(contentde);
     return gulp.src('./src/templates/**/*.twig')
         .pipe(twig({
             data: contentde
         }))
         .pipe(gulp.dest('./dist/'))
-        .pipe(browserSync.stream());
+        .pipe(browserSync.stream({stream: true}));
 });
 
 gulp.task('templates:watch', function () {
@@ -36,7 +36,7 @@ gulp.task('css', function () {
         cascade: false
     }))
     .pipe(gulp.dest('./dist/css'))
-    .pipe(browserSync.stream());
+    .pipe(browserSync.stream({stream: true}));
 });
 
 gulp.task('css:watch', function () {
@@ -55,7 +55,26 @@ gulp.task('browser-sync', function() {
     });
 });
 
-gulp.task('default', gulp.series('clean', gulp.parallel('browser-sync', 'templates', 'css', 'css:watch', 'templates:watch', 'content:watch')));
+gulp.task('js', function() {
+  return gulp.src('src/js/**/*.js')
+    .pipe(webpack({
+      output: {
+        filename: 'main.js'
+      },
+      resolve: {
+          // Makes sure the compiler looks for modules in /src and node_modules
+          modulesDirectories: ['./dist/js', 'node_modules']
+        }
+    }))
+    .pipe(gulp.dest('dist/js/'))
+    .pipe(browserSync.stream({stream: true}));
+});
+
+gulp.task('js:watch', function () {
+  return gulp.watch('./src/js/*.js', gulp.series('js'));
+});
+
+gulp.task('default', gulp.series('clean', gulp.parallel('browser-sync', 'templates', 'css', 'css:watch', 'templates:watch', 'content:watch', 'js', 'js:watch')));
 
 
 

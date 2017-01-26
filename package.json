@@ -24,6 +24,7 @@
     "gulp-sass": "^3.1.0",
     "gulp-twig": "^0.7.0",
     "gulp-watch": "^4.3.11",
-    "vue": "^2.1.10"
+    "vue": "^2.1.10",
+    "webpack-stream": "^3.2.0"
   }
 }
