@@ -17,6 +17,13 @@
   },
   "homepage": "https://github.com/DanielEytan/front-end-setup#readme",
   "dependencies": {
+    "browser-sync": "^2.18.6",
+    "gulp": "github:gulpjs/gulp#4.0",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-twig": "^0.7.0",
+    "gulp-watch": "^4.3.11",
     "vue": "^2.1.10"
   }
 }
