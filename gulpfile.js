@@ -63,7 +63,7 @@ gulp.task('js', function() {
       },
       resolve: {
           // Makes sure the compiler looks for modules in /src and node_modules
-          modulesDirectories: ['./dist/js', 'node_modules']
+          modulesDirectories: ['./src/js', 'node_modules']
         }
     }))
     .pipe(gulp.dest('dist/js/'))
