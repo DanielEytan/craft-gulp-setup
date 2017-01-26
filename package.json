@@ -1,0 +1,22 @@
+{
+  "name": "front-end-setup",
+  "version": "1.0.0",
+  "description": "New Fancy Set-Up",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://DanielEytan@github.com/DanielEytan/front-end-setup.git"
+  },
+  "author": "Daniel Eytan Schneider",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DanielEytan/front-end-setup/issues"
+  },
+  "homepage": "https://github.com/DanielEytan/front-end-setup#readme",
+  "dependencies": {
+    "vue": "^2.1.10"
+  }
+}
