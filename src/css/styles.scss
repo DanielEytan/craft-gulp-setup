@@ -1,7 +1,6 @@
-$blue: brown;
+$dark: rgb(20,20,20);
 
 body {
-	color: $blue;
-	background: gold;
-	transform: translate3d(0,0,0);
+	color: white;
+	background: $dark;
 }
