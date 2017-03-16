@@ -9,7 +9,7 @@ var webpack = require('webpack-stream');
 var imagemin = require('gulp-imagemin');
 
  gulp.task('clean', function () {
-    return gulp.src('./dist/*', {read: false})
+    return gulp.src('./html/*', {read: false})
         .pipe(clean());
 });
 
@@ -21,7 +21,7 @@ gulp.task('templates', function () {
         .pipe(twig({
             data: contentde
         }))
-        .pipe(gulp.dest('./dist/'))
+        .pipe(gulp.dest('./html/'))
         .pipe(browserSync.stream({stream: true}));
 });
 
@@ -36,7 +36,7 @@ gulp.task('css', function () {
         browsers: ['last 2 versions'],
         cascade: false
     }))
-    .pipe(gulp.dest('./dist/css'))
+    .pipe(gulp.dest('./html/css'))
     .pipe(browserSync.stream({stream: true}));
 });
 
@@ -55,7 +55,7 @@ gulp.task('images:watch', function () {
 gulp.task('browser-sync', function() {
     browserSync.init({
         server: {
-            baseDir: "./dist/"
+            baseDir: "./html/"
         }
     });
 });
@@ -71,7 +71,7 @@ gulp.task('js', function() {
           modulesDirectories: ['./src/js', 'node_modules']
         }
     }))
-    .pipe(gulp.dest('dist/js/'))
+    .pipe(gulp.dest('html/js/'))
     .pipe(browserSync.stream({stream: true}));
 });
 
@@ -82,7 +82,7 @@ gulp.task('js:watch', function () {
 gulp.task('images', function(){
   return gulp.src('./src/images/**/*.+(png|jpg|gif|svg)')
         .pipe(imagemin())
-        .pipe(gulp.dest('./dist/images/'))
+        .pipe(gulp.dest('./html/images/'))
         // .pipe(reload({stream: true}));
 });
 
