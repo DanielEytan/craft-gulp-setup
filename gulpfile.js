@@ -1,37 +1,17 @@
 var gulp = require('gulp');
 var sass = require('gulp-sass');
 var watch = require('gulp-watch');
-var clean = require('gulp-clean');
 var autoprefixer = require('gulp-autoprefixer');
 var browserSync = require('browser-sync').create();
 var fs = require('fs');
 var webpack = require('webpack-stream');
 var imagemin = require('gulp-imagemin');
 
- gulp.task('clean', function () {
-    return gulp.src('./html/*', {read: false})
-        .pipe(clean());
-});
-
-gulp.task('templates', function () {
-    'use strict';
-    var twig = require('gulp-twig');
-    var contentde = JSON.parse(fs.readFileSync('./content/de.json', 'utf8'));
-    return gulp.src('./src/templates/**/*.twig')
-        .pipe(twig({
-            data: contentde
-        }))
-        .pipe(gulp.dest('./html/'))
-        .pipe(browserSync.stream({stream: true}));
-});
-
-gulp.task('templates:watch', function () {
-  return gulp.watch('./src/templates/**/*.twig', gulp.series('templates'));
-});
-
 gulp.task('css', function () {
   return gulp.src('./src/css/**/*.scss')
-    .pipe(sass().on('error', sass.logError))
+    .pipe(sass({
+      // includePaths: require('node-reset-scss').includePaths
+    }).on('error', sass.logError))
     .pipe(autoprefixer({
         browsers: ['last 2 versions'],
         cascade: false
@@ -44,21 +24,32 @@ gulp.task('css:watch', function () {
   return gulp.watch('./src/css/**/*.scss', gulp.series('css'));
 });
 
-gulp.task('content:watch', function () {
-  return gulp.watch('./content/**/*.json', gulp.series('templates'));
-});
+// gulp.task('browser-sync', function() {
+//     browserSync.init({
+//         server: {
+//             baseDir: "./html/"
+//         }
+//     });
+// });
 
-gulp.task('images:watch', function () {
-  return gulp.watch('./src/images/**/*.+(png|jpg|gif|svg)', gulp.series('images'));
-});
 
+// browser-sync task for starting the server.
 gulp.task('browser-sync', function() {
-    browserSync.init({
-        server: {
-            baseDir: "./html/"
-        }
+    //watch files
+    var files = [
+    './html/css/styles.css'
+    // './craft/templates/*.twig'
+    ];
+ 
+    //initialize browsersync
+    browserSync.init(files, {
+    //browsersync with a php server
+    proxy: "http://craft-gulp-setup.dev/",
+    notify: false
     });
 });
+
+
 
 gulp.task('js', function() {
   return gulp.src('src/js/**/*.js')
@@ -86,8 +77,11 @@ gulp.task('images', function(){
         // .pipe(reload({stream: true}));
 });
 
+gulp.task('images:watch', function () {
+  return gulp.watch('./src/images/**/*.+(png|jpg|gif|svg)', gulp.series('images'));
+});
 
-gulp.task('default', gulp.series('clean', gulp.parallel('browser-sync', 'templates', 'css', 'css:watch', 'templates:watch', 'content:watch', 'js', 'js:watch', 'images')));
+gulp.task('default', gulp.series('images',  gulp.parallel('css', 'css:watch', 'js', 'js:watch', 'browser-sync')));
 
 
 

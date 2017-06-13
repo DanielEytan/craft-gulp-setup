@@ -1,4 +1,5 @@
 /node_modules
 /.DS_Store
-/dist
 /src/.DS_Store
+/craft/app
+/html/.DS_Store

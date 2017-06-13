@@ -1,8 +1,8 @@
 {
-  "name": "front-end-setup",
+  "name": "Craft-Gulp-Setup",
   "version": "1.0.0",
-  "description": "New Fancy Set-Up",
-  "main": "index.js",
+  "description": "Set-Up for Craft CMS and Gulp",
+  "main": "index.php",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
