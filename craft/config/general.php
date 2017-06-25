@@ -17,7 +17,7 @@ return array(
     'craft-gulp-setup.dev' => array(
         'devMode' => true,
         'environmentVariables' => array(
-            'basePath' => '/www/sites/craft-gulp-setup.dev/html/',
+            'basePath' => '/www/sites/craft-gulp-setup/html/',
             'baseUrl'  => 'http://craft-gulp-setup.dev/',
 			'siteUrl' => 'http://craft-gulp-setup.dev/',
 
@@ -26,7 +26,7 @@ return array(
     'example.uberspace.com' => array(
         'devMode' => false,
         'environmentVariables' => array(
-            'basePath' => '/var/www/virtual/example/',
+            'basePath' => '/var/www/virtual/example/html/',
             'baseUrl'  => 'http://example.uberspace.com/',
 			'siteUrl' => 'http://craft-gulp-setup.dev/',
         )

@@ -18,7 +18,13 @@
 		<header id="header">
 			<h1><a href="{{ siteUrl }}">{{ siteName }}</a></h1>
 			<nav>
-				<ul>
+				<div class="burger">
+						<div class="burger" onclick="menu()">
+							<span></span>
+							<span></span>
+							<span></span>
+						</div> Menu
+						</div>
 					<li><a href="{{ url('news') }}" {% if craft.request.firstSegment == 'news' %}class="active"{% endif %}>News</a></li>
 				</ul>
 			</nav>
@@ -36,6 +42,11 @@
 		</footer>
 	</div>
 	<script type="text/javascript" src="/js/main.js"></script>
+	<script>
+		function menu() {
+			document.getElementById("header").classList.toggle("active");
+		}
+	</script>
 
 </body>
 </html>

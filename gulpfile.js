@@ -5,7 +5,6 @@ var autoprefixer = require('gulp-autoprefixer');
 var browserSync = require('browser-sync').create();
 var fs = require('fs');
 var webpack = require('webpack-stream');
-var imagemin = require('gulp-imagemin');
 
 gulp.task('css', function () {
   return gulp.src('./src/css/**/*.scss')
@@ -44,7 +43,8 @@ gulp.task('browser-sync', function() {
     //initialize browsersync
     browserSync.init(files, {
     //browsersync with a php server
-    proxy: "http://craft-gulp-setup.dev/",
+    proxy: "http://localhost:3000/",
+
     notify: false
     });
 });
@@ -70,18 +70,7 @@ gulp.task('js:watch', function () {
   return gulp.watch('./src/js/*.js', gulp.series('js'));
 });
 
-gulp.task('images', function(){
-  return gulp.src('./src/images/**/*.+(png|jpg|gif|svg)')
-        .pipe(imagemin())
-        .pipe(gulp.dest('./html/images/'))
-        // .pipe(reload({stream: true}));
-});
-
-gulp.task('images:watch', function () {
-  return gulp.watch('./src/images/**/*.+(png|jpg|gif|svg)', gulp.series('images'));
-});
-
-gulp.task('default', gulp.series('images',  gulp.parallel('css', 'css:watch', 'js', 'js:watch', 'browser-sync')));
+gulp.task('default', gulp.parallel('browser-sync', 'css', 'css:watch', 'js', 'js:watch'));
 
 
 
