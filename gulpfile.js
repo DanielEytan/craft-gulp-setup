@@ -31,23 +31,31 @@ gulp.task('css:watch', function () {
 //     });
 // });
 
-
-// browser-sync task for starting the server.
 gulp.task('browser-sync', function() {
-    //watch files
-    var files = [
-    './html/css/styles.css'
-    // './craft/templates/*.twig'
-    ];
- 
-    //initialize browsersync
-    browserSync.init(files, {
-    //browsersync with a php server
-    proxy: "http://localhost:3000/",
-
-    notify: false
+    browserSync.init({
+        proxy: 'dyf.dev',
+        /*server: {
+            baseDir: "./html/",
+        }*/
     });
 });
+
+// // browser-sync task for starting the server.
+// gulp.task('browser-sync', function() {
+//     //watch files
+//     var files = [
+//     './html/css/styles.css'
+//     // './craft/templates/*.twig'
+//     ];
+ 
+//     //initialize browsersync
+//     browserSync.init(files, {
+//     //browsersync with a php server
+//     proxy: "http://localhost:3000/",
+
+//     notify: false
+//     });
+// });
 
 
 

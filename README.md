@@ -8,11 +8,12 @@ New Fancy Development Set-Uup for Craft and Gulp
 
 ## Installation
 # Craft
-- Download Craft (https://craftcms.com/) and drag the craft/app folder and craft/config/license.key file into your /craft destination
+- Download Craft (https://craftcms.com/) and drag the craft/app folder into your /craft destination
 - Delete the rest of the downloaded Craft folder
 - Create a database (UTF-8) for the project and edit the settings in /craft/config/db.php
 - Edit the systems’s general configuration for your localhost in /craft/config/general.php
 - Change the permissions for /craft/app, /craft/config and /craft/storage and their subfolders to 777 (only for localhost!)
+- Point your browser to your projects URL. If you see a monkey in your browser, you’ve done everything right!
 
 #Gulp
 - Make sure to have the Node and [gulp-cli](https://demisx.github.io/gulp4/2015/01/15/install-gulp4.html) installed.
