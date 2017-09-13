@@ -23,41 +23,14 @@ gulp.task('css:watch', function () {
   return gulp.watch('./src/css/**/*.scss', gulp.series('css'));
 });
 
-// gulp.task('browser-sync', function() {
-//     browserSync.init({
-//         server: {
-//             baseDir: "./html/"
-//         }
-//     });
-// });
-
 gulp.task('browser-sync', function() {
     browserSync.init({
-        proxy: 'dyf.dev',
+        proxy: 'example.dev',
         /*server: {
             baseDir: "./html/",
         }*/
     });
 });
-
-// // browser-sync task for starting the server.
-// gulp.task('browser-sync', function() {
-//     //watch files
-//     var files = [
-//     './html/css/styles.css'
-//     // './craft/templates/*.twig'
-//     ];
- 
-//     //initialize browsersync
-//     browserSync.init(files, {
-//     //browsersync with a php server
-//     proxy: "http://localhost:3000/",
-
-//     notify: false
-//     });
-// });
-
-
 
 gulp.task('js', function() {
   return gulp.src('src/js/**/*.js')

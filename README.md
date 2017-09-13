@@ -16,6 +16,7 @@ New Fancy Development Set-Uup for Craft and Gulp
 - Point your browser to your projects URL. If you see a monkey in your browser, you’ve done everything right!
 
 #Gulp
-- Make sure to have the Node and [gulp-cli](https://demisx.github.io/gulp4/2015/01/15/install-gulp4.html) installed.
-- Navigate to the project folder with the terminal and type: `npm install`.
+- Edit the Proxy for the browser-sync task in /gulpfile.js
+- Make sure to have the Node and [gulp-cli](https://demisx.github.io/gulp4/2015/01/15/install-gulp4.html) installed
+- Navigate to the project folder with the terminal and type: `npm install`
 - Once finished enter `gulp` to run the project
